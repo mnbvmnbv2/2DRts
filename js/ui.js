@@ -27,13 +27,16 @@ function updateTime() {
 updateTime();
 
 class UIElement {
-	constructor(pic, x, y, isStaticUI) {
+	constructor(pic, x, y, width, height, isStaticUI, clickFunc) {
 		let pict = new Image();
 		pict.src = 'pictures/' + pic;
 		this.pic = pict;
 		this.x = x;
 		this.y = y;
+		this.width = width;
+		this.height = height;
 		this.isStaticUI = isStaticUI;
+		this.clickFunc = clickFunc;
 
 		if (this.isStaticUI) {
 			staticUI.push(this);
@@ -43,5 +46,14 @@ class UIElement {
 	}
 }
 
-new UIElement('Header.png', 0, 0, true);
-new UIElement('IconBase.png', 900, 600, false);
+new UIElement('Header.png', 0, 0, 1800, 64, true, function() {
+	console.log('dasga');
+});
+new UIElement('IconBase.png', 868, 600, 64, 64, false, function() {
+	console.log('dajkgdbjkdbjgskbjg');
+	new BackgroundElement('WoodenRoom.png', 600, 520, 0);
+});
+new UIElement('IconBase.png', 268, 600, 64, 64, false, function() {
+	console.log('dajkdfgdbjg');
+	new BackgroundElement('WoodenRoom.png', 0, 520, 0);
+});

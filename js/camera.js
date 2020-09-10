@@ -28,13 +28,3 @@ class Camera {
 	}
 }
 let camera = new Camera();
-
-function zoomIn() {
-	console.log('in');
-	ctx.scale(1.1, 1.1);
-}
-
-function zoomOut() {
-	console.log('out');
-	ctx.scale(0.9, 0.9);
-}

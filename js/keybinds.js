@@ -19,8 +19,8 @@ function keyClick(e) {
 	} else if (e.code == 'ArrowRight') {
 		camera.right();
 	} else if (e.code == 'KeyZ') {
-		zoomIn();
+		console.log('hsdhdsgh');
 	} else if (e.code == 'KeyX') {
-		zoomOut();
+		console.log('sadgga');
 	}
 }

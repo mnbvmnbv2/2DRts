@@ -6,9 +6,7 @@ gameArea.height = gameArea.scrollHeight;
 var ctx = gameArea.getContext('2d');
 
 function drawSky() {
-	for (var i = 0; i < skyElements.length; i++) {
-		ctx.drawImage(skyElements[i].pic, skyElements[i].x, skyElements[i].y);
-	}
+	skyElements.forEach((elem) => ctx.drawImage(elem.pic, elem.x, elem.y));
 }
 
 function drawBackground() {
@@ -24,39 +22,23 @@ function drawBackground() {
 }
 
 function drawUnits() {
-	for (var i = 0; i < units.length; i++) {
-		if (units[i].dir == 1) {
-			ctx.drawImage(
-				units[i].pic,
-				units[i].frame * 128,
-				128,
-				128,
-				128,
-				Math.floor((units[i].x - camera.x * camMove + i * camera.x) / 4) * 4,
-				Math.floor((units[i].y - camera.y * camMove + i * camera.y) / 4) * 4,
-				128,
-				128
-			);
-		} else {
-			ctx.drawImage(
-				units[i].pic,
-				units[i].frame * 128,
-				0,
-				128,
-				128,
-				Math.floor((units[i].x - camera.x * camMove + i * camera.x) / 4) * 4,
-				Math.floor((units[i].y - camera.y * camMove + i * camera.y) / 4) * 4,
-				128,
-				128
-			);
-		}
+	for (let unit of units) {
+		ctx.drawImage(
+			unit.pic,
+			unit.frame * 128,
+			128 * unit.dir, // column 2 hvis retning left
+			128,
+			128,
+			Math.floor((unit.x - camera.x * camMove) / 4) * 4,
+			Math.floor((unit.y - camera.y * camMove) / 4) * 4,
+			128,
+			128
+		);
 	}
 }
 
 function drawStaticUI() {
-	for (var i = 0; i < staticUI.length; i++) {
-		ctx.drawImage(staticUI[i].pic, staticUI[i].x, staticUI[i].y);
-	}
+	staticUI.forEach((ui) => ctx.drawImage(ui.pic, ui.x, ui.y));
 }
 function drawMovingUI() {
 	for (var i = 0; i < movingUI.length; i++) {
@@ -69,7 +51,7 @@ function drawMovingUI() {
 }
 
 function drawGame() {
-	ctx.clearRect(-500, -500, 5000, 5000);
+	ctx.clearRect(0, 0, 1800, 900);
 	drawSky();
 	drawBackground();
 	drawUnits();
@@ -83,4 +65,3 @@ function drawGame() {
 	requestAnimationFrame(drawGame);
 }
 drawGame();
-//Math.floor((backgroundElements[i][j].x camera.x * camMove + i * camera.x) / 4) * 4,
