@@ -1,25 +1,23 @@
-//----keybinds
-
 document.addEventListener('keydown', keyClick);
 
 function keyClick(e) {
 	console.log(e.code);
 	if (e.code == 'KeyA') {
-		cameraLeft();
+		units[0].moveLeft();
 	} else if (e.code == 'KeyD') {
-		cameraRight();
+		units[0].moveRight();
 	} else if (e.code == 'KeyS') {
-		cameraDown();
+		camera.down();
 	} else if (e.code == 'KeyW') {
-		cameraUp();
+		camera.up();
 	} else if (e.code == 'ArrowUp') {
-		cameraUp();
+		camera.up();
 	} else if (e.code == 'ArrowDown') {
-		cameraDown();
+		camera.down();
 	} else if (e.code == 'ArrowLeft') {
-		cameraLeft();
+		camera.left();
 	} else if (e.code == 'ArrowRight') {
-		cameraRight();
+		camera.right();
 	} else if (e.code == 'KeyZ') {
 		zoomIn();
 	} else if (e.code == 'KeyX') {

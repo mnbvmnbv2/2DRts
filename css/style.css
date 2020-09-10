@@ -1,3 +1,8 @@
 #gameWindow {
 	border: 1px #000 solid;
 }
+
+@font-face {
+	font-family: LCD_Solid;
+	src: url(LCD_Solid.ttf);
+}
