@@ -46,14 +46,8 @@ class UIElement {
 	}
 }
 
-new UIElement('Header.png', 0, 0, 1800, 64, true, function() {
-	console.log('dasga');
+new UIElement('Header.png', 0, 0, 1800, 64, true, function() {});
+new UIElement('IconBase.png', 868, 668, 64, 64, false, function() {
+	new Building('WoodenRoom.png', 600, 520);
 });
-new UIElement('IconBase.png', 868, 600, 64, 64, false, function() {
-	console.log('dajkgdbjkdbjgskbjg');
-	new BackgroundElement('WoodenRoom.png', 600, 520, 0);
-});
-new UIElement('IconBase.png', 268, 600, 64, 64, false, function() {
-	console.log('dajkdfgdbjg');
-	new BackgroundElement('WoodenRoom.png', 0, 520, 0);
-});
+//new Building('WoodenRoom.png', this.x, this.y - 300);

@@ -12,7 +12,6 @@ function mouseClickFunc(e) {
 	for (var i = 0; i < staticUI.length; i++) {
 		if (mouseClick.x >= staticUI[i].x && mouseClick.x <= staticUI[i].x + staticUI[i].width) {
 			if (mouseClick.y >= staticUI[i].y && mouseClick.y <= staticUI[i].y + staticUI[i].height) {
-				console.log(staticUI[i]);
 			}
 		}
 	}
@@ -26,7 +25,6 @@ function mouseClickFunc(e) {
 				mouseClick.y <= movingUI[i].y + movingUI[i].height - camera.y * camMove
 			) {
 				movingUI[i].clickFunc();
-				console.log(movingUI[i]);
 			}
 		}
 	}

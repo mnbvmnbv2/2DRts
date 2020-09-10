@@ -21,6 +21,16 @@ function drawBackground() {
 	}
 }
 
+function drawBuildings() {
+	for (let elem of buildings) {
+		ctx.drawImage(
+			elem.pic,
+			Math.floor((elem.x - camera.x * camMove) / 4) * 4,
+			Math.floor((elem.y - camera.y * camMove) / 4) * 4
+		);
+	}
+}
+
 function drawUnits() {
 	for (let unit of units) {
 		ctx.drawImage(
@@ -54,6 +64,7 @@ function drawGame() {
 	ctx.clearRect(0, 0, 1800, 900);
 	drawSky();
 	drawBackground();
+	drawBuildings();
 	drawUnits();
 	drawMovingUI();
 	drawStaticUI();
