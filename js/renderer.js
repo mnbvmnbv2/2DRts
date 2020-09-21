@@ -11,13 +11,13 @@ function drawSky() {
 
 function drawBackground() {
 	for (var i = backgroundElements.length - 1; i > -1; i--) {
-		for (var j = 0; j < backgroundElements[i].length; j++) {
+		backgroundElements[i].forEach((e) => {
 			ctx.drawImage(
-				backgroundElements[i][j].pic,
-				Math.floor((backgroundElements[i][j].x - camera.x * camMove + i * camera.x) / 4) * 4,
-				Math.floor((backgroundElements[i][j].y - camera.y * camMove + i * camera.y) / 4) * 4
+				e.pic,
+				Math.floor((e.x - camera.x * camMove + i * camera.x) / 4) * 4,
+				Math.floor((e.y - camera.y * camMove + i * camera.y) / 4) * 4
 			);
-		}
+		});
 	}
 }
 
@@ -36,7 +36,7 @@ function drawUnits() {
 		ctx.drawImage(
 			unit.pic,
 			unit.frame * 128,
-			128 * unit.dir, // column 2 hvis retning left
+			128 * unit.dir, // column 2 if dir left (unit dir = 1)
 			128,
 			128,
 			Math.floor((unit.x - camera.x * camMove) / 4) * 4,
