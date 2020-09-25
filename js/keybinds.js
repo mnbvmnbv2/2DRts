@@ -18,8 +18,8 @@ function keyClick(e) {
 		camera.left();
 	} else if (e.code == 'ArrowRight') {
 		camera.right();
-	} else if (e.code == 'KeyZ') {
-		console.log('hsdhdsgh');
+	} else if (e.code == 'Escape') {
+		openOptions();
 	} else if (e.code == 'KeyX') {
 		console.log('sadgga');
 	}

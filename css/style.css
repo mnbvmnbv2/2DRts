@@ -1,8 +1,49 @@
 #gameWindow {
 	border: 1px #000 solid;
+	width: 99vw;
+	height: 98vh;
+}
+
+.centering {
+	display: flex;
+	justify-content: center;
 }
 
 @font-face {
 	font-family: LCD_Solid;
 	src: url(LCD_Solid.ttf);
+}
+
+.blackening {
+	background-color: black;
+	opacity: 0.5;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+	display: none;
+}
+
+#modulo {
+	display: none;
+	font-size: 25px;
+	position: fixed;
+	z-index: 3;
+	padding: 20px;
+	background: white;
+	color: black;
+	font-family: LCD_Solid;
+}
+
+#modulo h3 {
+	margin: -5px 0 0;
+}
+
+#close {
+	position: absolute;
+	left: 310px;
+	top: 15px;
+	cursor: pointer;
 }
