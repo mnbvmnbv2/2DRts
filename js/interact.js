@@ -4,10 +4,13 @@ let mouseClick = {
 	x : 0,
 	y : 0
 };
+
+let xOffset = 0;
+let yOffset = 0;
 function mouseClickFunc(e) {
 	//offset -9, -80
-	mouseClick.x = e.screenX - 48;
-	mouseClick.y = e.screenY - 80;
+	mouseClick.x = e.clientX + xOffset;
+	mouseClick.y = e.clientY + yOffset;
 	console.log(mouseClick.x + ', ' + mouseClick.y);
 	staticUI.forEach((u) => {
 		if (mouseClick.x >= u.x && mouseClick.x <= u.x + u.width) {

@@ -35,7 +35,7 @@ let sky = new BackgroundElement('Sky.png', 0, 0, 'static');
 
 //mountains
 for (var i = 0; i < 15; i++) {
-	new BackgroundElement('Mountain' + (Math.floor(Math.random() * 3) + 1) + '.png', 600 * i - 600 * 7, 220, 8);
+	new BackgroundElement('Mountain' + (i % 3 + 1) + '.png', 600 * i - 600 * 7, 100, 8);
 }
 for (var i = 0; i < 20; i++) {
 	new BackgroundElement('Back1.png', 600 * i - 600 * 9, 292, 3);

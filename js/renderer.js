@@ -3,6 +3,13 @@ var gameArea = document.getElementById('gameWindow');
 gameArea.width = gameArea.scrollWidth;
 gameArea.height = gameArea.scrollHeight;
 
+updateWindowSize();
+function updateWindowSize() {
+	gameArea.width = gameArea.scrollWidth;
+	gameArea.height = gameArea.scrollHeight;
+	requestAnimationFrame(updateWindowSize);
+}
+
 var ctx = gameArea.getContext('2d');
 
 function drawSky() {
