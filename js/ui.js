@@ -63,5 +63,5 @@ class UIElement {
 	}
 }
 
-new UIElement('Header.png', 0, 0, 1800, 64, true, function() {});
+//new UIElement('Header.png', 0, 0, 1800, 64, true, function() {});
 new UIElement('IconBase.png', 868, 668, 64, 64, false, 'buildWood');

@@ -76,8 +76,8 @@ function drawGame() {
 	drawMovingUI();
 	drawStaticUI();
 	ctx.font = '40px LCD_Solid';
-	ctx.fillText('Menu', 24, 48);
-	ctx.fillText(`${hour}:${min}:${sec}`, 1630, 48);
+	//ctx.fillText('Menu', 24, 48);
+	ctx.fillText(`${hour}:${min}:${sec}`, gameArea.scrollWidth / 2 - 80, 48);
 	ctx.fillRect(mouseClick.x, mouseClick.y, 1, 1);
 
 	requestAnimationFrame(drawGame);
