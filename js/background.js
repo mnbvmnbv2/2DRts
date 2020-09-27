@@ -7,7 +7,7 @@ canvassize:
 1800x total
 900y total
 */
-const numberOfLayers = 12;
+const numberOfLayers = 15;
 let skyElements = [];
 let backgroundElements = [];
 for (var i = 0; i < numberOfLayers; i++) {
@@ -30,13 +30,50 @@ class BackgroundElement {
 		}
 	}
 }
+class ParticleElement {
+	constructor(pic, x, y, layer) {
+		let pict = new Image();
+		pict.src = 'pictures/' + pic;
+		this.pic = pict;
+		this.x = x;
+		this.y = y;
+		this.layer = layer;
+		this.time = 0;
+
+		backgroundElements[this.layer].push(this);
+		this.move();
+	}
+	removeThis() {
+		backgroundElements[this.layer].splice(backgroundElements[this.layer].indexOf(this), 1);
+	}
+	move() {
+		this.y += 4;
+		this.x += Math.floor(Math.random() * 9) - 4;
+		this.time++;
+		if (this.time == 110) {
+			this.removeThis();
+		}
+		let that = this;
+		setTimeout(function() {
+			that.move();
+		}, 100);
+	}
+}
 
 //sky
 let sky = new BackgroundElement('Sky.png', 0, 0, 'static');
 
 //mountains
 for (var i = 0; i < 15; i++) {
-	new BackgroundElement('mountains/Mountain' + ((i + 2) % 3 + 1) + '.png', 600 * i - 600 * 7, 150, 10);
+	new BackgroundElement('mountains/Mountain' + ((i + 2) % 3 + 1) + '.png', 600 * i - 600 * 7, 200, 10);
+}
+for (var i = 0; i < 5; i++) {
+	new BackgroundElement(
+		'clouds/cloud1.png',
+		Math.floor(Math.random() * 3000) - 500,
+		Math.floor(Math.random() * 150) + 100,
+		10
+	);
 }
 
 /*
@@ -45,17 +82,20 @@ for (var i = 0; i < 20; i++) {
 }
 */
 for (var i = 0; i < 20; i++) {
-	new BackgroundElement('hills/Mid1.png', 600 * i - 600 * 9, 482, 8);
+	new BackgroundElement('hills/Mid1.png', 600 * i - 600 * 9, 440, 9);
 }
 for (var i = 0; i < 20; i++) {
-	new BackgroundElement('hills/Front1.png', 600 * i - 600 * 9, 502, 7);
+	new BackgroundElement('hills/Front1.png', 600 * i - 600 * 9, 450, 8);
 }
 
 for (var i = 0; i < 20; i++) {
-	new BackgroundElement('forest/Back1.png', 600 * i - 600 * 9, 288, 4);
+	new BackgroundElement('forest/BackBack1.png', 600 * i - 600 * 9, 262, 6);
 }
 for (var i = 0; i < 20; i++) {
-	new BackgroundElement('forest/Mid1.png', 600 * i - 600 * 9, 292, 3);
+	new BackgroundElement('forest/Back1.png', 600 * i - 600 * 9, 280, 4);
+}
+for (var i = 0; i < 20; i++) {
+	new BackgroundElement('forest/Mid1.png', 600 * i - 600 * 9, 288, 3);
 }
 for (var i = 0; i < 20; i++) {
 	new BackgroundElement('forest/Front1.png', 600 * i - 600 * 9, 296, 2);
@@ -66,14 +106,13 @@ for (var i = 0; i < 20; i++) {
 
 //bakken
 for (var i = 0; i < 23; i++) {
-	new BackgroundElement('Ground.png', 600 * i - 600 * 10, 300, 0);
+	new BackgroundElement('ground/Ground.png', 600 * i - 600 * 10, 300, 0);
 }
 for (var i = 0; i < 23; i++) {
-	new BackgroundElement('MidGround1.png', 600 * i - 600 * 10, 900, 0);
+	new BackgroundElement('ground/MidGround1.png', 600 * i - 600 * 10, 900, 0);
 }
 for (var i = 0; i < 10; i++) {
 	for (var j = 0; j < 23; j++) {
-		new BackgroundElement('LowerGround1.png', 600 * j - 600 * 10, 1500 + 600 * i, 0);
+		new BackgroundElement('ground/LowerGround1.png', 600 * j - 600 * 10, 1500 + 600 * i, 0);
 	}
 }
-//new BackgroundElement('WoodenRoom.png', 600, 520, 0);

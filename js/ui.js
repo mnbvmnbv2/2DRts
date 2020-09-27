@@ -9,24 +9,6 @@ canvassize:
 */
 let staticUI = [];
 let movingUI = [];
-let sec = 0;
-let min = 0;
-let hour = 0;
-let time = `${hour}:${min}:${sec}`;
-function updateTime() {
-	sec++;
-	if (sec == 60) {
-		sec = 0;
-		min++;
-	}
-	if (min == 60) {
-		min = 0;
-		hour++;
-	}
-	time = `${hour}:${min}:${sec}`;
-	setTimeout(updateTime, 1000);
-}
-updateTime();
 
 class UIElement {
 	constructor(pic, x, y, width, height, isStaticUI, clickFuncType) {
@@ -49,7 +31,7 @@ class UIElement {
 	clickFunc() {
 		switch (this.clickFuncType) {
 			case 'buildWood':
-				new Building('WoodenRoom.png', this.x - 268, this.y - 148, function() {
+				new Building('buildings/WoodenRoom.png', this.x - 268, this.y - 148, function() {
 					//dette krasjer, idk om evig løkke
 					//new UIElement('IconBase.png', this.x + 468, this.y + 250, 64, 64, false, 'buildWood');
 				});

@@ -1,5 +1,3 @@
-var gameArea = document.getElementById('gameWindow');
-
 gameArea.width = gameArea.scrollWidth;
 gameArea.height = gameArea.scrollHeight;
 
@@ -79,6 +77,12 @@ function drawGame() {
 	//ctx.fillText('Menu', 24, 48);
 	ctx.fillText(time, gameArea.scrollWidth / 2 - ctx.measureText(time).width / 2, 48);
 	ctx.fillRect(mouseClick.x, mouseClick.y, 1, 1);
+
+	let blueFilter = new Image();
+	blueFilter.src = 'pictures/BlueFilter1.png';
+	for (let i = 0; i < blueFilterNumber; i++) {
+		ctx.drawImage(blueFilter, 0, 0);
+	}
 
 	requestAnimationFrame(drawGame);
 }

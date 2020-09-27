@@ -1,6 +1,8 @@
 document.addEventListener('keydown', keyClick);
 document.addEventListener('wheel', mouseWheel);
 
+let blueFilterNumber = 0;
+
 function keyClick(e) {
 	console.log(e.code);
 	if (e.code == 'KeyA') {
@@ -11,6 +13,14 @@ function keyClick(e) {
 		camera.down();
 	} else if (e.code == 'KeyW') {
 		camera.up();
+	} else if (e.code == 'KeyK') {
+		if (blueFilterNumber < 20) {
+			blueFilterNumber++;
+		}
+	} else if (e.code == 'KeyJ') {
+		if (blueFilterNumber > 0) {
+			blueFilterNumber--;
+		}
 	} else if (e.code == 'ArrowUp') {
 		camera.up();
 	} else if (e.code == 'ArrowDown') {

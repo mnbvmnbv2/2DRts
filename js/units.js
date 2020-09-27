@@ -25,9 +25,12 @@ class unit {
 		this.animation = animation;
 		this.frame = this.animFrames.indexOf(this.animation);
 		this.dir = dir;
+		this.targetX = x;
+		this.loop = 0;
 
 		units.push(this);
 		this.updateFrame();
+		this.checkIfTargetX();
 	}
 	moveRight() {
 		this.animation = 2;
@@ -38,6 +41,21 @@ class unit {
 		this.animation = 2;
 		this.x -= 4;
 		this.dir = 1;
+	}
+	checkIfTargetX() {
+		clearTimeout(this.loop);
+		let that = this;
+		if (this.x < this.targetX) {
+			this.moveRight();
+			this.loop = setTimeout(function() {
+				that.checkIfTargetX();
+			}, 25);
+		} else if (this.x > this.targetX) {
+			this.moveLeft();
+			this.loop = setTimeout(function() {
+				that.checkIfTargetX();
+			}, 25);
+		}
 	}
 	updateFrame() {
 		//hvis neste frame er en del av anim så øk frame
