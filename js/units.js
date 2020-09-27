@@ -1,17 +1,8 @@
 //0 = idle, 1 = interact, 2 = walk, 3 = specialwalk
 //unitPicSize = 128x128
 //dir 0 = right, 1 = left
-const timeMs = 200;
-let units = [];
 
-//oppdaterer frames på alle units
-function updateFrames() {
-	for (var i = 0; i < units.length; i++) {
-		units[i].updateFrame();
-	}
-	setTimeout(updateFrames, timeMs);
-}
-updateFrames();
+let units = [];
 
 class unit {
 	constructor(name, pic, x, y, animFrames, animation, dir) {

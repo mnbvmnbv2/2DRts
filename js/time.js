@@ -24,3 +24,12 @@ function createLeaves() {
 	setTimeout(createLeaves, 4000);
 }
 createLeaves();
+
+const timeMs = 200;
+//oppdaterer frames på alle units
+function updateFrames() {
+	units.forEach((u) => u.updateFrame());
+	buildings.forEach((b) => b.updateFrame());
+	setTimeout(updateFrames, timeMs);
+}
+updateFrames();

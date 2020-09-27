@@ -19,19 +19,25 @@ function drawBackground() {
 		backgroundElements[i].forEach((e) => {
 			ctx.drawImage(
 				e.pic,
-				Math.floor((e.x - camera.x * camMove + i * camera.x) / 4) * 4,
-				Math.floor((e.y - camera.y * camMove + i * camera.y) / 4) * 4
+				Math.floor((e.x - camera.x * camMove + i * camera.x) / pixelSize) * pixelSize,
+				Math.floor((e.y - camera.y * camMove + i * camera.y) / pixelSize) * pixelSize
 			);
 		});
 	}
 }
 
 function drawBuildings() {
-	for (let elem of buildings) {
+	for (let build of buildings) {
 		ctx.drawImage(
-			elem.pic,
-			Math.floor((elem.x - camera.x * camMove) / 4) * 4,
-			Math.floor((elem.y - camera.y * camMove) / 4) * 4
+			build.pic,
+			build.frame * build.width,
+			0,
+			build.width,
+			build.height,
+			Math.floor((build.x - camera.x * camMove) / pixelSize) * pixelSize,
+			Math.floor((build.y - camera.y * camMove) / pixelSize) * pixelSize,
+			build.width,
+			build.height
 		);
 	}
 }
@@ -44,8 +50,8 @@ function drawUnits() {
 			128 * unit.dir, // column 2 if dir left (unit dir = 1)
 			128,
 			128,
-			Math.floor((unit.x - camera.x * camMove) / 4) * 4,
-			Math.floor((unit.y - camera.y * camMove) / 4) * 4,
+			Math.floor((unit.x - camera.x * camMove) / pixelSize) * pixelSize,
+			Math.floor((unit.y - camera.y * camMove) / pixelSize) * pixelSize,
 			128,
 			128
 		);
@@ -53,20 +59,23 @@ function drawUnits() {
 }
 
 function drawStaticUI() {
-	staticUI.forEach((ui) => ctx.drawImage(ui.pic, ui.x, ui.y));
+	staticUI.forEach((ui) =>
+		ctx.drawImage(ui.pic, Math.floor(ui.x / pixelSize) * pixelSize, Math.floor(ui.y / pixelSize) * pixelSize)
+	);
 }
 function drawMovingUI() {
 	for (var i = 0; i < movingUI.length; i++) {
 		ctx.drawImage(
 			movingUI[i].pic,
-			Math.floor((movingUI[i].x - camera.x * camMove) / 4) * 4,
-			Math.floor((movingUI[i].y - camera.y * camMove) / 4) * 4
+			Math.floor((movingUI[i].x - camera.x * camMove) / pixelSize) * pixelSize,
+			Math.floor((movingUI[i].y - camera.y * camMove) / pixelSize) * pixelSize
 		);
 	}
 }
 
+new UIElement('icons/IconBase.png', gameArea.scrollWidth / 2 - 32, 686, 16, 16, false, 'buildBase');
 function drawGame() {
-	ctx.clearRect(0, 0, 1800, 900);
+	//ctx.clearRect(0, 0, 1800, 900);
 	drawSky();
 	drawBackground();
 	drawBuildings();

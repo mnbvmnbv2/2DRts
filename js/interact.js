@@ -3,7 +3,7 @@ gameArea.addEventListener(
 	'contextmenu',
 	function(ev) {
 		ev.preventDefault();
-		units[0].targetX = Math.floor(mouseClick.x / 4) * 4;
+		units[0].targetX = Math.floor(mouseClick.x / pixelSize) * pixelSize;
 		units[0].checkIfTargetX();
 		return false;
 	},
@@ -15,12 +15,9 @@ let mouseClick = {
 	y : 0
 };
 
-let xOffset = 0;
-let yOffset = 0;
 function mouseClickFunc(e) {
-	//offset -9, -80
-	mouseClick.x = e.clientX + xOffset + camera.x * camMove;
-	mouseClick.y = e.clientY + yOffset + camera.y * camMove;
+	mouseClick.x = e.clientX + camera.x * camMove;
+	mouseClick.y = e.clientY + camera.y * camMove;
 	console.log(mouseClick.x + ', ' + mouseClick.y);
 
 	staticUI.forEach((u) => {
@@ -31,20 +28,18 @@ function mouseClickFunc(e) {
 	});
 
 	movingUI.forEach((u) => {
-		for (var i = 0; i < movingUI.length; i++) {
-			if (mouseClick.x >= u.x && mouseClick.x <= u.x + u.width) {
-				if (mouseClick.y >= u.y && mouseClick.y <= u.y + u.height) {
-					u.clickFunc();
-				}
+		if (mouseClick.x >= u.x && mouseClick.x <= u.x + u.width) {
+			if (mouseClick.y >= u.y && mouseClick.y <= u.y + u.height) {
+				u.clickFunc();
+				console.log(u);
 			}
 		}
 	});
+
 	buildings.forEach((b) => {
-		for (var i = 0; i < movingUI.length; i++) {
-			if (mouseClick.x >= b.x && mouseClick.x <= b.x + 600) {
-				if (mouseClick.y >= b.y && mouseClick.y <= b.y + 300) {
-					b.clickFunc();
-				}
+		if (mouseClick.x >= b.x && mouseClick.x <= b.x + b.width) {
+			if (mouseClick.y >= b.y && mouseClick.y <= b.y + b.height) {
+				console.log('hei dette er ' + b.name);
 			}
 		}
 	});

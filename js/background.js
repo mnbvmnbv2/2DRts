@@ -2,10 +2,6 @@
 backgroundblocksize:
 600px x
 600px y
-
-canvassize:
-1800x total
-900y total
 */
 const numberOfLayers = 15;
 let skyElements = [];
@@ -47,8 +43,8 @@ class ParticleElement {
 		backgroundElements[this.layer].splice(backgroundElements[this.layer].indexOf(this), 1);
 	}
 	move() {
-		this.y += 4;
-		this.x += Math.floor(Math.random() * 9) - 4;
+		this.y += pixelSize;
+		this.x += Math.floor(Math.random() * 9) - pixelSize;
 		this.time++;
 		if (this.time == 110) {
 			this.removeThis();
@@ -65,7 +61,7 @@ let sky = new BackgroundElement('Sky.png', 0, 0, 'static');
 
 //mountains
 for (var i = 0; i < 15; i++) {
-	new BackgroundElement('mountains/Mountain' + ((i + 2) % 3 + 1) + '.png', 600 * i - 600 * 7, 200, 10);
+	new BackgroundElement('mountains/Mountain' + ((i + 2) % 3 + 1) + '.png', 600 * i - 600 * 7, 150, 10);
 }
 for (var i = 0; i < 5; i++) {
 	new BackgroundElement(
