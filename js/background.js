@@ -7,9 +7,10 @@ canvassize:
 1800x total
 900y total
 */
+const numberOfLayers = 12;
 let skyElements = [];
 let backgroundElements = [];
-for (var i = 0; i < 10; i++) {
+for (var i = 0; i < numberOfLayers; i++) {
 	backgroundElements.push([]);
 }
 
@@ -35,18 +36,32 @@ let sky = new BackgroundElement('Sky.png', 0, 0, 'static');
 
 //mountains
 for (var i = 0; i < 15; i++) {
-	new BackgroundElement('Mountain' + (i % 3 + 1) + '.png', 600 * i - 600 * 7, 100, 8);
-}
-for (var i = 0; i < 20; i++) {
-	new BackgroundElement('Back1.png', 600 * i - 600 * 9, 292, 3);
-}
-for (var i = 0; i < 20; i++) {
-	new BackgroundElement('Mid1.png', 600 * i - 600 * 9, 296, 2);
+	new BackgroundElement('mountains/Mountain' + ((i + 2) % 3 + 1) + '.png', 600 * i - 600 * 7, 150, 10);
 }
 
-//foreground
+/*
 for (var i = 0; i < 20; i++) {
-	new BackgroundElement('Front' + (Math.floor(Math.random() * 2) + 1) + '.png', 600 * i - 600 * 9, 300, 1);
+	new BackgroundElement('hills/Back1.png', 600 * i - 600 * 9, 462, 9);
+}
+*/
+for (var i = 0; i < 20; i++) {
+	new BackgroundElement('hills/Mid1.png', 600 * i - 600 * 9, 482, 8);
+}
+for (var i = 0; i < 20; i++) {
+	new BackgroundElement('hills/Front1.png', 600 * i - 600 * 9, 502, 7);
+}
+
+for (var i = 0; i < 20; i++) {
+	new BackgroundElement('forest/Back1.png', 600 * i - 600 * 9, 288, 4);
+}
+for (var i = 0; i < 20; i++) {
+	new BackgroundElement('forest/Mid1.png', 600 * i - 600 * 9, 292, 3);
+}
+for (var i = 0; i < 20; i++) {
+	new BackgroundElement('forest/Front1.png', 600 * i - 600 * 9, 296, 2);
+}
+for (var i = 0; i < 20; i++) {
+	new BackgroundElement('forest/First' + (Math.floor(Math.random() * 3) + 1) + '.png', 600 * i - 600 * 9, 300, 1);
 }
 
 //bakken

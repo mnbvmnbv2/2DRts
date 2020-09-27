@@ -12,6 +12,7 @@ let movingUI = [];
 let sec = 0;
 let min = 0;
 let hour = 0;
+let time = `${hour}:${min}:${sec}`;
 function updateTime() {
 	sec++;
 	if (sec == 60) {
@@ -22,6 +23,7 @@ function updateTime() {
 		min = 0;
 		hour++;
 	}
+	time = `${hour}:${min}:${sec}`;
 	setTimeout(updateTime, 1000);
 }
 updateTime();
@@ -64,4 +66,4 @@ class UIElement {
 }
 
 //new UIElement('Header.png', 0, 0, 1800, 64, true, function() {});
-new UIElement('IconBase.png', 868, 668, 64, 64, false, 'buildWood');
+new UIElement('icons/IconBase.png', 868, 668, 64, 64, false, 'buildWood');

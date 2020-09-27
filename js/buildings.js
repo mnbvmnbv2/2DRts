@@ -26,7 +26,7 @@ class Building {
 			new Building('WoodenRoom.png', this.x - 268, this.y - 150);
 		});
 		*/
-		new UIElement('IconBase.png', this.x + 268, this.y - 150, 64, 64, false, 'buildWood');
+		new UIElement('icons/IconBase.png', this.x + 268, this.y - 150, 64, 64, false, 'buildWood');
 		buildings.push(this);
 	}
 }

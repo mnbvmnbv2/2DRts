@@ -1,4 +1,5 @@
 document.addEventListener('keydown', keyClick);
+document.addEventListener('wheel', mouseWheel);
 
 function keyClick(e) {
 	console.log(e.code);
@@ -22,5 +23,13 @@ function keyClick(e) {
 		openOptions();
 	} else if (e.code == 'KeyX') {
 		console.log('sadgga');
+	}
+}
+
+function mouseWheel(e) {
+	if (e.deltaY > 0) {
+		camera.down();
+	} else {
+		camera.up();
 	}
 }
