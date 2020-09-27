@@ -13,9 +13,8 @@ function updateTime() {
 		hour++;
 	}
 	time = `${hour}:${min}:${sec}`;
-	setTimeout(updateTime, 1000);
 }
-updateTime();
+let timeUpdater = setInterval(updateTime, 1000);
 
 function createLeaves() {
 	for (let i = 0; i < Math.floor(Math.random() * 5) + 2; i++) {

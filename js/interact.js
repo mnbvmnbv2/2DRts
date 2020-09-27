@@ -39,7 +39,8 @@ function mouseClickFunc(e) {
 	buildings.forEach((b) => {
 		if (mouseClick.x >= b.x && mouseClick.x <= b.x + b.width) {
 			if (mouseClick.y >= b.y && mouseClick.y <= b.y + b.height) {
-				console.log('hei dette er ' + b.name);
+				new UIElement('UI/BuildingUI.png', b.x + 7 * pixelSize, b.y + 4 * pixelSize, 86, 42, false, null);
+				console.log(b.name);
 			}
 		}
 	});

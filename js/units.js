@@ -55,6 +55,7 @@ class unit {
 		} else {
 			//hvis ikke start anim på nytt
 			this.frame = this.animFrames.indexOf(this.animation);
+			this.animation = 0;
 		}
 	}
 }
