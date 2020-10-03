@@ -87,10 +87,14 @@ function drawGame() {
 	ctx.fillText(time, gameArea.scrollWidth / 2 - ctx.measureText(time).width / 2, 48);
 	ctx.fillRect(mouseClick.x, mouseClick.y, 1, 1);
 
+	ctx.globalCompositeOperation = 'hue';
+
 	let blueFilter = new Image();
 	blueFilter.src = 'pictures/BlueFilter1.png';
 	for (let i = 0; i < blueFilterNumber; i++) {
-		ctx.drawImage(blueFilter, 0, 0);
+		ctx.fillStyle = 'hsla(240, 100%, 20%, 0.5)';
+		ctx.fillRect(0, 0, 2500, 2000);
+		//ctx.drawImage(blueFilter, 0, 0);
 	}
 
 	requestAnimationFrame(drawGame);

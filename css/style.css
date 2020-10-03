@@ -4,6 +4,7 @@
 	left: 0;
 	top: 0;
 	position: absolute;
+	z-index: 1;
 }
 
 @font-face {
@@ -23,7 +24,7 @@
 	display: none;
 }
 
-#modulo {
+#modal {
 	display: none;
 	font-size: 25px;
 	position: fixed;
@@ -34,7 +35,7 @@
 	font-family: LCD_Solid;
 }
 
-#modulo h3 {
+#modal h3 {
 	margin: -5px 0 0;
 }
 
@@ -43,4 +44,18 @@
 	left: 310px;
 	top: 15px;
 	cursor: pointer;
+}
+
+.modal {
+	position: absolute;
+	display: inline-block;
+	z-index: 2;
+	background: white;
+	color: black;
+}
+.modal h3 {
+	margin: 5px 0 0;
+}
+.modal span {
+	margin: -5px 250px 0 0;
 }

@@ -39,7 +39,31 @@ function mouseClickFunc(e) {
 	buildings.forEach((b) => {
 		if (mouseClick.x >= b.x && mouseClick.x <= b.x + b.width) {
 			if (mouseClick.y >= b.y && mouseClick.y <= b.y + b.height) {
-				new UIElement('UI/BuildingUI.png', b.x + 7 * pixelSize, b.y + 4 * pixelSize, 86, 42, false, null);
+				$(function() {
+					console.log($(`[data-modalId="${buildings.indexOf(b)}`).length);
+					if ($(`[data-modalId="${buildings.indexOf(b)}`).length == 0) {
+						let $buildingModal = $('<div></div>').html(`
+						<h3>${b.name}</h3>
+						<span class="close">X</span>
+						<input type="checkbox">
+						`);
+						$buildingModal.attr('data-modalId', buildings.indexOf(b));
+						$buildingModal.addClass('modal');
+						$buildingModal.css(
+							'left',
+							`${Math.floor((b.x + 25 - camera.x * camMove) / pixelSize) * pixelSize}px`
+						);
+						$buildingModal.css(
+							'top',
+							`${Math.floor((b.y + 25 - camera.y * camMove) / pixelSize) * pixelSize}px`
+						);
+						$buildingModal.css('width', `${b.width - 50}px`);
+						$buildingModal.css('height', `${b.height - 50}px`);
+						$('body').append($buildingModal);
+						buildingModals.push($buildingModal);
+					}
+				});
+				//new UIElement('UI/BuildingUI.png', b.x + 7 * pixelSize, b.y + 4 * pixelSize, 86, 42, false, null);
 				console.log(b.name);
 			}
 		}

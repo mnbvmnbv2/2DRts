@@ -9,21 +9,33 @@ class Camera {
 	right() {
 		if (this.x < border.right) {
 			this.x += this.move;
+			buildingModals.forEach((m) => {
+				m.css('left', `-=${Math.floor(this.move * camMove / pixelSize) * pixelSize}`);
+			});
 		}
 	}
 	left() {
 		if (this.x > border.left) {
 			this.x -= this.move;
+			buildingModals.forEach((m) => {
+				m.css('left', `+=${Math.floor(this.move * camMove / pixelSize) * pixelSize}`);
+			});
 		}
 	}
 	up() {
 		if (this.y > border.up) {
 			this.y -= this.move;
+			buildingModals.forEach((m) => {
+				m.css('top', `+=${Math.floor(this.move * camMove / pixelSize) * pixelSize}`);
+			});
 		}
 	}
 	down() {
 		if (this.y < border.down) {
 			this.y += this.move;
+			buildingModals.forEach((m) => {
+				m.css('top', `-=${Math.floor(this.move * camMove / pixelSize) * pixelSize}`);
+			});
 		}
 	}
 }
