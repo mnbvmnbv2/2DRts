@@ -52,10 +52,14 @@
 	z-index: 2;
 	background: white;
 	color: black;
+	font-family: LCD_Solid;
 }
 .modal h3 {
 	margin: 5px 0 0;
 }
 .modal span {
-	margin: -5px 250px 0 0;
+	position: absolute;
+	margin-left: 325px;
+	margin-top: -15px;
+	cursor: pointer;
 }

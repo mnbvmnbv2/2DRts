@@ -38,7 +38,6 @@ $(function() {
 	}
 
 	function mouseWheel(e) {
-		console.log(e);
 		if (e.originalEvent.deltaY > 0) {
 			camera.down();
 		} else {

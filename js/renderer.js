@@ -85,7 +85,6 @@ function drawGame() {
 	ctx.font = '40px LCD_Solid';
 	//ctx.fillText('Menu', 24, 48);
 	ctx.fillText(time, gameArea.scrollWidth / 2 - ctx.measureText(time).width / 2, 48);
-	ctx.fillRect(mouseClick.x, mouseClick.y, 1, 1);
 
 	ctx.globalCompositeOperation = 'hue';
 

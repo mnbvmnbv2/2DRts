@@ -40,13 +40,15 @@ function mouseClickFunc(e) {
 		if (mouseClick.x >= b.x && mouseClick.x <= b.x + b.width) {
 			if (mouseClick.y >= b.y && mouseClick.y <= b.y + b.height) {
 				$(function() {
-					console.log($(`[data-modalId="${buildings.indexOf(b)}`).length);
 					if ($(`[data-modalId="${buildings.indexOf(b)}`).length == 0) {
-						let $buildingModal = $('<div></div>').html(`
-						<h3>${b.name}</h3>
-						<span class="close">X</span>
-						<input type="checkbox">
-						`);
+						let $buildingModal = $('<div></div>').html(`<h3>${b.name}</h3>`);
+						let $close = $('<span></span>').html('X').on('click', function() {
+							buildingModals.splice(buildingModals.indexOf($close.parent), 1);
+							$close.parent().remove();
+						});
+						$close.addClass('close');
+						$buildingModal.append($close);
+
 						$buildingModal.attr('data-modalId', buildings.indexOf(b));
 						$buildingModal.addClass('modal');
 						$buildingModal.css(
