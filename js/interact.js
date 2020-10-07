@@ -1,5 +1,5 @@
-document.addEventListener('mousedown', mouseClickFunc);
-gameArea.addEventListener(
+gameWindow.addEventListener('mousedown', mouseClickFunc);
+document.addEventListener(
 	'contextmenu',
 	function(ev) {
 		ev.preventDefault();

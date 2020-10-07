@@ -17,11 +17,25 @@ class Building {
 		this.y = y;
 		this.numberOfFrames = numberOfFrames;
 		this.frame = 0;
-		/*
+		this.adjacent = { over: undefined, right: undefined, left: undefined, under: undefined };
+
+		this.center = { x: this.x + this.width / 2, y: this.y + this.height / 2 };
+
+		let uiSize = 16;
 		//over
-		new UIElement('IconBase.png', this.x + 268, this.y - 150, false, function() {
-			new Building('WoodenRoom.png', this.x - 268, this.y - 150);
-		});
+		new UIElement(
+			'icons/IconBase.png',
+			this.center.x - uiSize * pixelSize / 2,
+			this.center.y - uiSize * pixelSize / 2 - this.height,
+			uiSize,
+			uiSize,
+			false,
+			'buildBase'
+			/*function() {
+				new Building('WoodenRoom.png', this.x - 268, this.y - 150);
+			}*/
+		);
+		/*
 		//under
 		new UIElement('IconBase.png', this.x + 268, this.y + 450, false, function() {
 			new Building('WoodenRoom.png', this.x - 268, this.y - 150);
@@ -35,7 +49,6 @@ class Building {
 			new Building('WoodenRoom.png', this.x - 268, this.y - 150);
 		});
 		*/
-		//new UIElement('icons/IconBase.png', this.x + 268, this.y - 150, false, 'buildWood');
 		buildings.push(this);
 	}
 	updateFrame() {
