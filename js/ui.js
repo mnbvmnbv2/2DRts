@@ -2,7 +2,7 @@ let staticUI = [];
 let movingUI = [];
 
 class UIElement {
-	constructor(pic, x, y, width, height, isStaticUI, clickFuncType) {
+	constructor(pic, x, y, width, height, isStaticUI, clickFunc) {
 		this.width = width * pixelSize;
 		this.height = height * pixelSize;
 		let pict = new Image(this.width, this.height);
@@ -10,7 +10,7 @@ class UIElement {
 		this.pic = pict;
 		this.x = x;
 		this.y = y;
-		this.clickFuncType = clickFuncType;
+		this.clickFunc = clickFunc;
 
 		if (isStaticUI) {
 			staticUI.push(this);
@@ -18,6 +18,7 @@ class UIElement {
 			movingUI.push(this);
 		}
 	}
+	/*
 	clickFunc() {
 		switch (this.clickFuncType) {
 			case 'buildWood':
@@ -35,6 +36,11 @@ class UIElement {
 				break;
 		}
 	}
+	*/
 }
 
-//new UIElement('Header.png', 0, 0, 1800, 64, true, function() {});
+function buildBase(ui) {
+	let a = new Building('Base', 'buildings/SmallRoom4x.png', ui.x - 168, ui.y - 66, 100, 50, 4);
+	movingUI.splice(movingUI.indexOf(ui), 1);
+	return a;
+}

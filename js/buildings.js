@@ -20,20 +20,22 @@ class Building {
 		this.adjacent = { over: undefined, right: undefined, left: undefined, under: undefined };
 
 		this.center = { x: this.x + this.width / 2, y: this.y + this.height / 2 };
+		let that = this;
 
 		let uiSize = 16;
 		//over
-		new UIElement(
+		let ui = new UIElement(
 			'icons/IconBase.png',
 			this.center.x - uiSize * pixelSize / 2,
 			this.center.y - uiSize * pixelSize / 2 - this.height,
 			uiSize,
 			uiSize,
 			false,
-			'buildBase'
-			/*function() {
-				new Building('WoodenRoom.png', this.x - 268, this.y - 150);
-			}*/
+			function() {
+				let building = buildBase(ui);
+				that.adjacent.over = building;
+				building.adjacent.under = that;
+			}
 		);
 		/*
 		//under

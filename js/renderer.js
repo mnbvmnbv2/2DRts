@@ -73,7 +73,10 @@ function drawMovingUI() {
 	}
 }
 
-new UIElement('icons/IconBase.png', gameArea.scrollWidth / 2 - 32, 686, 16, 16, false, 'buildBase');
+new UIElement('icons/IconBase.png', gameArea.scrollWidth / 2 - 32, 686, 16, 16, false, function() {
+	buildBase(this);
+});
+
 function drawGame() {
 	//ctx.clearRect(0, 0, 1800, 900);
 	drawSky();
