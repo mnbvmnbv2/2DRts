@@ -20,37 +20,7 @@ class Building {
 		this.adjacent = { over: undefined, right: undefined, left: undefined, under: undefined };
 
 		this.center = { x: this.x + this.width / 2, y: this.y + this.height / 2 };
-		let that = this;
 
-		let uiSize = 16;
-		//over
-		let ui = new UIElement(
-			'icons/IconBase.png',
-			this.center.x - uiSize * pixelSize / 2,
-			this.center.y - uiSize * pixelSize / 2 - this.height,
-			uiSize,
-			uiSize,
-			false,
-			function() {
-				let building = buildBase(ui);
-				that.adjacent.over = building;
-				building.adjacent.under = that;
-			}
-		);
-		/*
-		//under
-		new UIElement('IconBase.png', this.x + 268, this.y + 450, false, function() {
-			new Building('WoodenRoom.png', this.x - 268, this.y - 150);
-		});
-		//høyre
-		new UIElement('IconBase.png', this.x + 868, this.y + 150, false, function() {
-			new Building('WoodenRoom.png', this.x - 268, this.y - 150);
-		});
-		//venstre
-		new UIElement('IconBase.png', this.x - 332, this.y + 150, false, function() {
-			new Building('WoodenRoom.png', this.x - 268, this.y - 150);
-		});
-		*/
 		buildings.push(this);
 	}
 	updateFrame() {
@@ -61,6 +31,83 @@ class Building {
 			} else {
 				this.frame++;
 			}
+		}
+	}
+	createAdjacentBuildButtons() {
+		let that = this;
+		let uiSize = 16;
+
+		//over
+		if (this.adjacent.over === undefined) {
+			let uiOver = new UIElement(
+				'icons/IconBase.png',
+				this.center.x - uiSize * pixelSize / 2,
+				this.center.y - uiSize * pixelSize / 2 - this.height,
+				uiSize,
+				uiSize,
+				false,
+				function() {
+					let building = buildBase(uiOver);
+					that.adjacent.over = building;
+					building.adjacent.under = that;
+					building.createAdjacentBuildButtons();
+				}
+			);
+		}
+
+		//under
+		console.log(this.adjacent.under);
+		if (this.adjacent.under === undefined) {
+			new UIElement(
+				'icons/IconBase.png',
+				this.center.x - uiSize * pixelSize / 2,
+				this.center.y - uiSize * pixelSize / 2 + this.height,
+				uiSize,
+				uiSize,
+				false,
+				function() {
+					let building = buildBase(this);
+					that.adjacent.under = building;
+					building.adjacent.over = that;
+					building.createAdjacentBuildButtons();
+				}
+			);
+		}
+
+		//right
+		if (this.adjacent.right === undefined) {
+			new UIElement(
+				'icons/IconBase.png',
+				this.center.x - uiSize * pixelSize / 2 + this.width,
+				this.center.y - uiSize * pixelSize / 2,
+				uiSize,
+				uiSize,
+				false,
+				function() {
+					let building = buildBase(this);
+					that.adjacent.right = building;
+					building.adjacent.left = that;
+					building.createAdjacentBuildButtons();
+				}
+			);
+		}
+
+		//left
+		if (this.adjacent.left === undefined) {
+			new UIElement(
+				'icons/IconBase.png',
+				this.center.x - uiSize * pixelSize / 2 - this.width,
+				this.center.y - uiSize * pixelSize / 2,
+				uiSize,
+				uiSize,
+				false,
+				function() {
+					let building = buildBase(this);
+					that.adjacent.left = building;
+					building.adjacent.right = that;
+					building.createAdjacentBuildButtons();
+				}
+			);
 		}
 	}
 }

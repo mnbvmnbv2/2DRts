@@ -3,7 +3,7 @@ backgroundblocksize:
 600px x
 600px y
 */
-const numberOfLayers = 15;
+const numberOfLayers = 12;
 let skyElements = [];
 let backgroundElements = [];
 for (var i = 0; i < numberOfLayers; i++) {

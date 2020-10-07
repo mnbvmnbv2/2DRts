@@ -31,7 +31,6 @@ function mouseClickFunc(e) {
 		if (mouseClick.x >= u.x && mouseClick.x <= u.x + u.width) {
 			if (mouseClick.y >= u.y && mouseClick.y <= u.y + u.height) {
 				u.clickFunc();
-				console.log(u);
 			}
 		}
 	});
@@ -66,7 +65,6 @@ function mouseClickFunc(e) {
 					}
 				});
 				//new UIElement('UI/BuildingUI.png', b.x + 7 * pixelSize, b.y + 4 * pixelSize, 86, 42, false, null);
-				console.log(b.name);
 			}
 		}
 	});
