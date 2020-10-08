@@ -21,6 +21,24 @@ class Building {
 
 		this.center = { x: this.x + this.width / 2, y: this.y + this.height / 2 };
 
+		let that = this;
+
+		$(function() {
+			that.$modal = $('<div></div>').html(`<h3>${that.name}</h3>`);
+			let $close = $('<span></span>').html('X').on('click', function() {
+				that.$modal.toggle();
+			});
+			$close.addClass('close');
+			that.$modal.append($close);
+			that.$modal.addClass('modal');
+			that.$modal.css('left', `${Math.floor((that.x + 25 - camera.x * camMove) / pixelSize) * pixelSize}px`);
+			that.$modal.css('top', `${Math.floor((that.y + 25 - camera.y * camMove) / pixelSize) * pixelSize}px`);
+			that.$modal.css('width', `${that.width - 50}px`);
+			that.$modal.css('height', `${that.height - 50}px`);
+			$('body').append(that.$modal);
+			buildingModals.push(that.$modal);
+		});
+
 		buildings.push(this);
 	}
 	updateFrame() {
@@ -56,7 +74,6 @@ class Building {
 		}
 
 		//under
-		console.log(this.adjacent.under);
 		if (this.adjacent.under === undefined) {
 			new UIElement(
 				'icons/IconBase.png',
