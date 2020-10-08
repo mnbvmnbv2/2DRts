@@ -1,3 +1,7 @@
+body {
+	overflow: hidden;
+}
+
 #gameWindow {
 	width: 100vw;
 	height: 100vh;
