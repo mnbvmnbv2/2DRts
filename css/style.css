@@ -28,7 +28,7 @@ body {
 	display: none;
 }
 
-#modal {
+#menu {
 	display: none;
 	font-size: 25px;
 	position: fixed;
@@ -39,7 +39,7 @@ body {
 	font-family: LCD_Solid;
 }
 
-#modal h3 {
+#menu h3 {
 	margin: -5px 0 0;
 }
 

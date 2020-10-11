@@ -4,6 +4,7 @@ height = 200
 */
 let buildings = [];
 let buildMap = new Map();
+let buildingModals = [];
 
 class Building {
 	constructor(name, pic, x, y, width, height, numberOfFrames, coord) {
