@@ -74,12 +74,10 @@ function drawMovingUI() {
 }
 
 new UIElement('icons/IconBase.png', gameArea.scrollWidth / 2 - 32, 686, 16, 16, false, function() {
-	let base = buildBase(this);
-	base.createAdjacentBuildButtons();
+	buildBase(this);
 });
 
 function drawGame() {
-	//ctx.clearRect(0, 0, 1800, 900);
 	drawSky();
 	drawBackground();
 	drawBuildings();
@@ -87,7 +85,6 @@ function drawGame() {
 	drawMovingUI();
 	drawStaticUI();
 	ctx.font = '40px LCD_Solid';
-	//ctx.fillText('Menu', 24, 48);
 	ctx.fillText(time, gameArea.scrollWidth / 2 - ctx.measureText(time).width / 2, 48);
 
 	ctx.globalCompositeOperation = 'hue';
@@ -97,7 +94,6 @@ function drawGame() {
 	for (let i = 0; i < blueFilterNumber; i++) {
 		ctx.fillStyle = 'hsla(240, 100%, 20%, 0.5)';
 		ctx.fillRect(0, 0, 2500, 2000);
-		//ctx.drawImage(blueFilter, 0, 0);
 	}
 
 	requestAnimationFrame(drawGame);

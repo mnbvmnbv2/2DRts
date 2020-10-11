@@ -21,14 +21,16 @@ class Building {
 		this.numberOfFrames = numberOfFrames;
 		this.frame = 0;
 
+		this.checkNumber = 0;
+
 		this.uiSize = 16;
 
 		this.center = { x: this.x + this.width / 2, y: this.y + this.height / 2 };
 
 		const that = this;
-		$(function() {
+		$(function () {
 			that.$modal = $('<div></div>').html(`<h3>${that.name}</h3>`);
-			let $close = $('<span></span>').html('X').on('click', function() {
+			let $close = $('<span></span>').html('X').on('click', function () {
 				that.$modal.toggle();
 			});
 			$close.addClass('close');
@@ -43,12 +45,30 @@ class Building {
 		});
 
 		this.coord = { x: coord.x, y: coord.y };
-		buildMap[`${coord.x}-${coord.y}`] = this;
+		buildMap[`${this.coord.x}|${this.coord.y}`] = this;
 
-		this.adjacent = { left: undefined, over: undefined, right: undefined, under: undefined };
+		//left,top,right,bottom
+		this.adjacent = [undefined, undefined, undefined, undefined];
 		this.checkAdjacent();
 
 		buildings.push(this);
+
+		this.createAdjacentBuildButtons();
+
+		console.log(buildings);
+		console.log(buildMap);
+	}
+	left() {
+		return this.adjacent[0];
+	}
+	top() {
+		return this.adjacent[1];
+	}
+	right() {
+		return this.adjacent[2];
+	}
+	bottom() {
+		return this.adjacent[3];
 	}
 	updateFrame() {
 		if (this.numberOfFrames == 0) {
@@ -61,34 +81,36 @@ class Building {
 		}
 	}
 	checkAdjacent() {
+		this.checkNumber = buildings.length;
 		adjacency.forEach((a, i) => {
-			if (buildMap[`${a.x + this.coord.x}-${a.y + this.coord.y}`] != undefined) {
-				this.adjacent[Object.keys(this.adjacent)[i]] = buildMap[`${a.x + this.coord.x}-${a.y + this.coord.y}`];
+			if (buildMap[`${a.x + this.coord.x}|${a.y + this.coord.y}`] != undefined) {
+				this.adjacent[i] = buildMap[`${a.x + this.coord.x}|${a.y + this.coord.y}`];
+				if (this.adjacent[i] instanceof Building && this.adjacent[i].checkNumber < buildings.length) {
+					this.adjacent[i].checkAdjacent();
+				}
 			}
 		});
 	}
 	createAdjacentBuildButtons() {
-		adjacency.forEach((a) => this.createAdjacentBuildButton(a.x, a.y));
-	}
-	createAdjacentBuildButton(relX, relY) {
 		let that = this;
 
-		if (this.adjacent.over === undefined) {
-			new UIElement(
-				'icons/IconBase.png',
-				this.center.x - this.uiSize * pixelSize / 2 + relX * this.width,
-				this.center.y - this.uiSize * pixelSize / 2 + relY * this.height,
-				this.uiSize,
-				this.uiSize,
-				false,
-				function() {
-					let coords = { x: that.coord.x + relX, y: that.coord.y - relY };
-					let building = buildRoom(this, coords);
-					that.adjacent.over = building;
-					building.adjacent.under = that;
-					building.createAdjacentBuildButtons();
-				}
-			);
+		//Object.keys(this.adjacent).forEach(k,i => 
+		for (let [i, a] in Object.entries(this.adjacent)) {
+			if (a == undefined) {
+				a = new UIElement(
+					'icons/IconBase.png',
+					this.center.x - this.uiSize * pixelSize / 2 + adjacency[i].x * this.width,
+					this.center.y - this.uiSize * pixelSize / 2 + adjacency[i].y * this.height,
+					this.uiSize,
+					this.uiSize,
+					false,
+					function () {
+						let coords = { x: that.coord.x + adjacency[i].x, y: that.coord.y - adjacency[i].y };
+						buildRoom(this, coords);
+					}
+				);
+				buildMap[`${adjacency[i].x + this.coord.x}|${adjacency[i].y + this.coord.y}`] = a;
+			}
 		}
 	}
 }
