@@ -18,8 +18,8 @@ buildingModals = [];
 function openOptions() {
 	if (!modal) {
 		modal = true;
-		$modal.css('display', 'inline');
-		$blackening.css('display', 'inline');
+		$modal.toggle();
+		$blackening.toggle();
 
 		//center modal
 		$modal.css('left', `${window.innerWidth / 2 - modalWidth / 2}px`);
@@ -31,6 +31,6 @@ function openOptions() {
 
 function closeModal() {
 	modal = false;
-	$modal.css('display', 'none');
-	$blackening.css('display', 'none');
+	$modal.toggle();
+	$blackening.toggle();
 }
