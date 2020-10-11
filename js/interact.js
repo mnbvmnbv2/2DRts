@@ -5,7 +5,7 @@ document.addEventListener(
 		ev.preventDefault();
 		rightClick.x = ev.clientX + camera.x * camMove;
 		rightClick.y = ev.clientY + camera.y * camMove;
-		units[0].targetX = Math.floor(rightClick.x / pixelSize) * pixelSize;
+		units[0].targetX = Math.floor((rightClick.x - units[0].width / 2) / pixelSize) * pixelSize;
 		units[0].checkIfTargetX();
 		return false;
 	},
