@@ -1,6 +1,6 @@
 /*
-width = 400
-height = 200
+width = 100
+height = 50
 */
 let buildings = [];
 let buildMap = new Map();
@@ -37,11 +37,16 @@ class Building {
 			});
 			$close.addClass('close');
 			that.$modal.append($close);
+
 			that.$modal.addClass('modal');
 			that.$modal.css('left', `${Math.floor((that.x + 25 - camera.x * camMove) / pixelSize) * pixelSize}px`);
 			that.$modal.css('top', `${Math.floor((that.y + 25 - camera.y * camMove) / pixelSize) * pixelSize}px`);
 			that.$modal.css('width', `${that.width - 50}px`);
 			that.$modal.css('height', `${that.height - 50}px`);
+
+			let $main = $('<div></div>').html('test');
+			that.$modal.append($main);
+
 			$('body').append(that.$modal);
 			buildingModals.push(that.$modal);
 		});

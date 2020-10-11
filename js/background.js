@@ -1,11 +1,3 @@
-/*
-backgroundblocksize:
-600px x
-600px y
-orig:
-150x
-150y
-*/
 const backgroundSize = 150;
 const numberOfLayers = 12;
 let skyElements = [];
@@ -95,11 +87,6 @@ function addBackgroundElem(pic, height, layer) {
 	}
 }
 
-/*
-for (var i = 0; i < 20; i++) {
-	new BackgroundElement('hills/Back1.png', 600 * i - 600 * 9, 462, 9);
-}
-*/
 addBackgroundElem('hills/Mid1.png', 440, 9);
 addBackgroundElem('hills/Front1.png', 450, 8);
 addBackgroundElem('forest/BackBack1.png', 262, 6);
