@@ -3,7 +3,9 @@ document.addEventListener(
 	'contextmenu',
 	function(ev) {
 		ev.preventDefault();
-		units[0].targetX = Math.floor(mouseClick.x / pixelSize) * pixelSize;
+		rightClick.x = ev.clientX + camera.x * camMove;
+		rightClick.y = ev.clientY + camera.y * camMove;
+		units[0].targetX = Math.floor(rightClick.x / pixelSize) * pixelSize;
 		units[0].checkIfTargetX();
 		return false;
 	},
@@ -11,6 +13,10 @@ document.addEventListener(
 );
 
 let mouseClick = {
+	x : 0,
+	y : 0
+};
+let rightClick = {
 	x : 0,
 	y : 0
 };
