@@ -54,9 +54,6 @@ class Building {
 		buildings.push(this);
 
 		this.createAdjacentBuildButtons();
-
-		console.log(buildings);
-		console.log(buildMap);
 	}
 	left() {
 		return this.adjacent[0];
@@ -105,7 +102,6 @@ class Building {
 					false,
 					function() {
 						let coords = { x: that.coord.x + adjacency[i].x, y: that.coord.y + adjacency[i].y };
-						console.log(adjacency[i]);
 						buildRoom(this, coords);
 					}
 				);
