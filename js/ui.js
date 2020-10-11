@@ -8,6 +8,7 @@ class UIElement {
 		let pict = new Image(this.width, this.height);
 		pict.src = 'pictures/' + pic;
 		this.pic = pict;
+
 		this.x = x;
 		this.y = y;
 		this.clickFunc = clickFunc;
@@ -18,31 +19,12 @@ class UIElement {
 			movingUI.push(this);
 		}
 	}
-	/*
-	clickFunc() {
-		switch (this.clickFuncType) {
-			case 'buildWood':
-				new Building('buildings/WoodenRoom.png', this.x - 268, this.y - 148);
-				if (this.isStaticUI) {
-				} else {
-					movingUI.splice(movingUI.indexOf(this), 1);
-				}
-				break;
-			case 'buildBase':
-				new Building('Base', 'buildings/SmallRoom4x.png', this.x - 168, this.y - 66, 100, 50, 4);
-				movingUI.splice(movingUI.indexOf(this), 1);
-				break; 
-			default:
-				break;
-		}
-	}
-	*/
 }
 
 function buildRoom(ui, coord) {
 	let a = new Building(
 		'Room',
-		'buildings/SmallRoom4x.png',
+		'buildings/SmallRoom.png',
 		Math.floor((ui.x - 168) / pixelSize) * pixelSize,
 		Math.floor((ui.y - 66) / pixelSize) * pixelSize,
 		100,
@@ -56,7 +38,7 @@ function buildRoom(ui, coord) {
 function buildBase(ui) {
 	let a = new Building(
 		'Base',
-		'buildings/SmallRoom4x.png',
+		'buildings/SmallRoom.png',
 		Math.floor((ui.x - 168) / pixelSize) * pixelSize,
 		Math.floor((ui.y - 66) / pixelSize) * pixelSize,
 		100,

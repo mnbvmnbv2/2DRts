@@ -10,17 +10,18 @@ class Building {
 	constructor(name, pic, x, y, width, height, numberOfFrames, coord) {
 		this.name = name;
 
-		let pict = new Image(this.width, this.height);
-		pict.src = 'pictures/' + pic;
-		this.pic = pict;
-
-		this.x = x;
-		this.y = y;
 		this.width = width * pixelSize;
 		this.height = height * pixelSize;
 
 		this.numberOfFrames = numberOfFrames;
 		this.frame = 0;
+
+		let pict = new Image();
+		pict.src = 'pictures/' + pic;
+		this.pic = pict;
+
+		this.x = x;
+		this.y = y;
 
 		this.checkNumber = 0;
 

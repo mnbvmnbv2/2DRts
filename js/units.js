@@ -5,11 +5,16 @@
 let units = [];
 
 class unit {
-	constructor(name, pic, x, y, animFrames, animation, dir) {
+	constructor(name, pic, x, y, width, height, animFrames, animation, dir) {
 		this.name = name;
+
+		this.width = width * pixelSize;
+		this.height = height * pixelSize;
+
 		let pict = new Image();
 		pict.src = 'pictures/' + pic;
 		this.pic = pict;
+
 		this.x = x;
 		this.y = y;
 		this.animFrames = animFrames;
@@ -59,4 +64,4 @@ class unit {
 		}
 	}
 }
-let miner = new unit('miner', 'Miner4x.png', 100, 684, [ 0, 0, 1, 1, 2, 2, 2, 3, 3, 3 ], 0, 0);
+let miner = new unit('miner', 'Miner.png', 100, 684, 32, 32, [ 0, 0, 1, 1, 2, 2, 2, 3, 3, 3 ], 0, 0);

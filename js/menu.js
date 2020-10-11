@@ -13,8 +13,6 @@ $menu.css('Height', `${menuHeight}px`);
 
 let menu = false;
 
-buildingMenus = [];
-
 function openOptions() {
 	if (!menu) {
 		menu = true;

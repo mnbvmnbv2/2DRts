@@ -18,7 +18,7 @@ let timeUpdater = setInterval(updateTime, 1000);
 
 function createLeaves() {
 	for (let i = 0; i < Math.floor(Math.random() * 5) + 2; i++) {
-		new ParticleElement('particles/leaf.png', Math.floor(Math.random() * 2000), 440, 1);
+		new ParticleElement('particles/leaf.png', Math.floor(Math.random() * 2000), 440, 1, 1, 1);
 	}
 	setTimeout(createLeaves, 4000);
 }
