@@ -74,7 +74,8 @@ function drawMovingUI() {
 }
 
 new UIElement('icons/IconBase.png', gameArea.scrollWidth / 2 - 32, 686, 16, 16, false, function() {
-	buildBase(this);
+	base = buildBase(this);
+	base.checkAdjacent();
 });
 
 function drawGame() {

@@ -28,9 +28,9 @@ class Building {
 		this.center = { x: this.x + this.width / 2, y: this.y + this.height / 2 };
 
 		const that = this;
-		$(function () {
+		$(function() {
 			that.$modal = $('<div></div>').html(`<h3>${that.name}</h3>`);
-			let $close = $('<span></span>').html('X').on('click', function () {
+			let $close = $('<span></span>').html('X').on('click', function() {
 				that.$modal.toggle();
 			});
 			$close.addClass('close');
@@ -48,7 +48,7 @@ class Building {
 		buildMap[`${this.coord.x}|${this.coord.y}`] = this;
 
 		//left,top,right,bottom
-		this.adjacent = [undefined, undefined, undefined, undefined];
+		this.adjacent = [ undefined, undefined, undefined, undefined ];
 		this.checkAdjacent();
 
 		buildings.push(this);
@@ -94,8 +94,7 @@ class Building {
 	createAdjacentBuildButtons() {
 		let that = this;
 
-		//Object.keys(this.adjacent).forEach(k,i => 
-		for (let [i, a] in Object.entries(this.adjacent)) {
+		this.adjacent.forEach((a, i) => {
 			if (a == undefined) {
 				a = new UIElement(
 					'icons/IconBase.png',
@@ -104,13 +103,14 @@ class Building {
 					this.uiSize,
 					this.uiSize,
 					false,
-					function () {
-						let coords = { x: that.coord.x + adjacency[i].x, y: that.coord.y - adjacency[i].y };
+					function() {
+						let coords = { x: that.coord.x + adjacency[i].x, y: that.coord.y + adjacency[i].y };
+						console.log(adjacency[i]);
 						buildRoom(this, coords);
 					}
 				);
 				buildMap[`${adjacency[i].x + this.coord.x}|${adjacency[i].y + this.coord.y}`] = a;
 			}
-		}
+		});
 	}
 }
