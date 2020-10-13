@@ -90,7 +90,7 @@ new UIElement('icons/IconBase.png', gameArea.scrollWidth / 2 - 32, 686, 16, 16, 
 
 function drawGame() {
 	ctx.fillStyle = 'rgb(191, 254, 255)';
-	ctx.fillRect(0, 0, 3000, 2500);
+	ctx.fillRect(0, 0, gameArea.scrollWidth, gameArea.scrollHeight);
 
 	ctx.imageSmoothingEnabled = false;
 
