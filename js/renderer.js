@@ -111,6 +111,8 @@ function drawGame() {
 		ctx.fillRect(0, 0, 2500, 2000);
 	}
 
+	camMove = Math.floor(100 / window.devicePixelRatio) / 100 * 3 * pixelSize;
+
 	requestAnimationFrame(drawGame);
 }
 drawGame();

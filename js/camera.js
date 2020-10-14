@@ -1,4 +1,4 @@
-const camMove = 3 * pixelSize;
+let camMove = 3 * pixelSize;
 const border = { right: 500, left: -500, up: -500, down: 500 };
 class Camera {
 	constructor() {
