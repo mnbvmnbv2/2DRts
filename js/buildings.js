@@ -6,22 +6,13 @@ let buildings = [];
 let buildMap = new Map();
 let buildingModals = [];
 
-class Building {
+class Building extends CanvasElement {
 	constructor(name, pic, x, y, width, height, numberOfFrames, coord) {
+		super(pic, x, y, width, height);
 		this.name = name;
-
-		this.width = width * pixelSize;
-		this.height = height * pixelSize;
 
 		this.numberOfFrames = numberOfFrames;
 		this.frame = 0;
-
-		let pict = new Image();
-		pict.src = 'pictures/' + pic;
-		this.pic = pict;
-
-		this.x = x;
-		this.y = y;
 
 		this.checkNumber = 0;
 
@@ -67,20 +58,42 @@ class Building {
 	createModal() {
 		const that = this;
 		$(function() {
-			that.$modal = $('<div></div>').html(`<h3>${that.name}</h3>`);
-			let $close = $('<span></span>').html('X').on('click', function() {
-				that.$modal.toggle();
+			that.$modal = $('<div></div>', {
+				class  : 'modal',
+				width  : `${that.width - 50}px`,
+				height : `${that.height - 50}px`
+			}).css({
+				left : `${Math.floor((that.x + 25 - camera.x * camMove) / pixelSize) * pixelSize}px`,
+				top  : `${Math.floor((that.y + 25 - camera.y * camMove) / pixelSize) * pixelSize}px`
 			});
-			$close.addClass('close');
-			that.$modal.append($close);
 
+			const $topDiv = $(`<div></div>`, {
+				class : 'topDiv'
+			})
+				.html(`<h3>${that.name}</h3>`)
+				.appendTo(that.$modal);
+
+			$('<input>', {
+				type : 'checkbox'
+			}).appendTo($topDiv);
+
+			$('<span>X</span>', {
+				class : 'close'
+			})
+				.on('click', function() {
+					that.$modal.toggle();
+				})
+				.appendTo($topDiv);
+
+			/*
 			that.$modal.addClass('modal');
 			that.$modal.css('left', `${Math.floor((that.x + 25 - camera.x * camMove) / pixelSize) * pixelSize}px`);
 			that.$modal.css('top', `${Math.floor((that.y + 25 - camera.y * camMove) / pixelSize) * pixelSize}px`);
 			that.$modal.css('width', `${that.width - 50}px`);
 			that.$modal.css('height', `${that.height - 50}px`);
+			*/
 
-			const $main = $('<div></div>').html('test');
+			const $main = $('<div></div>');
 			const $roomBtn = $('<button></button>').html('Make cobble').on('click', function() {
 				that.makeCobble();
 			});

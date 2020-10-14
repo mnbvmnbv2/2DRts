@@ -6,16 +6,9 @@ for (var i = 0; i < numberOfLayers; i++) {
 	backgroundElements.push([]);
 }
 
-class BackgroundElement {
+class BackgroundElement extends CanvasElement {
 	constructor(pic, x, y, width, height, layer) {
-		this.width = width * pixelSize;
-		this.height = height * pixelSize;
-		let pict = new Image(this.width, this.height);
-		pict.src = 'pictures/' + pic;
-		this.pic = pict;
-
-		this.x = x;
-		this.y = y;
+		super(pic, x, y, width, height);
 		this.layer = layer;
 
 		if (this.layer == 'static') {
@@ -48,9 +41,6 @@ class ParticleElement extends BackgroundElement {
 		}, leavesMoveTime);
 	}
 }
-
-//sky
-//let sky = new BackgroundElement('Sky.png', 0, 0,  'static');
 
 //mountains
 for (var i = 0; i < 15; i++) {

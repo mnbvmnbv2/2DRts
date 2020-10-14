@@ -1,16 +1,9 @@
 let staticUI = [];
 let movingUI = [];
 
-class UIElement {
+class UIElement extends CanvasElement {
 	constructor(pic, x, y, width, height, isStaticUI, clickFunc) {
-		this.width = width * pixelSize;
-		this.height = height * pixelSize;
-		let pict = new Image(this.width, this.height);
-		pict.src = 'pictures/' + pic;
-		this.pic = pict;
-
-		this.x = x;
-		this.y = y;
+		super(pic, x, y, width, height);
 		this.clickFunc = clickFunc;
 
 		if (isStaticUI) {
