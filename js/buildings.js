@@ -94,14 +94,24 @@ class Building extends CanvasElement {
 			*/
 
 			const $main = $('<div></div>');
-			const $roomBtn = $('<button></button>').html('Make cobble').on('click', function() {
-				that.makeCobble();
-			});
-			$main.append($roomBtn);
+			that.addBtnToModal($main, 'Make cobble', makeCobble);
+			that.addBtnToModal($main, 'Make wood1', makeWood1);
+			that.addBtnToModal($main, 'Make wood2', makeWood2);
+			that.addBtnToModal($main, 'Make base', makeBase);
 			that.$modal.append($main);
 
 			$('body').append(that.$modal);
 			buildingModals.push(that.$modal);
+		});
+	}
+	addBtnToModal(where, text, funct) {
+		const that = this;
+		$(function() {
+			console.log(funct);
+			const $btn = $('<button></button>').html(text).on('click', function() {
+				funct(that);
+			});
+			where.append($btn);
 		});
 	}
 	checkAdjacent() {
@@ -114,14 +124,6 @@ class Building extends CanvasElement {
 				}
 			}
 		});
-	}
-	makeCobble() {
-		this.numberOfFrames = 0;
-		let pict = new Image();
-		pict.src = 'pictures/buildings/CobbleRoom.png';
-		this.pic = pict;
-		this.frame = 0;
-		console.log(pict);
 	}
 	createAdjacentBuildButtons() {
 		let that = this;
@@ -144,4 +146,32 @@ class Building extends CanvasElement {
 			}
 		});
 	}
+}
+function makeBase(that) {
+	that.name = 'Base';
+	that.numberOfFrames = 4;
+	that.pic = new Image();
+	that.pic.src = 'pictures/buildings/SmallRoom.png';
+	that.frame = 0;
+}
+function makeCobble(that) {
+	that.name = 'Bobble';
+	that.numberOfFrames = 0;
+	that.pic = new Image();
+	that.pic.src = 'pictures/buildings/CobbleRoom.png';
+	that.frame = 0;
+}
+function makeWood1(that) {
+	that.name = 'Room';
+	that.numberOfFrames = 0;
+	that.pic = new Image();
+	that.pic.src = 'pictures/buildings/WoodenRoom.png';
+	that.frame = 0;
+}
+function makeWood2(that) {
+	that.name = 'Wood2';
+	that.numberOfFrames = 0;
+	that.pic = new Image();
+	that.pic.src = 'pictures/buildings/WoodRoom1.png';
+	that.frame = 0;
 }
