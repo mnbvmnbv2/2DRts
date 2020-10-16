@@ -17,12 +17,12 @@ class UIElement extends CanvasElement {
 function buildRoom(ui, coord) {
 	let a = new Building(
 		'Room',
-		'buildings/SmallRoom.png',
+		'buildings/BlueprintRoom.png',
 		Math.floor((ui.x - 168) / pixelSize) * pixelSize,
 		Math.floor((ui.y - 66) / pixelSize) * pixelSize,
 		100,
 		50,
-		4,
+		0,
 		coord
 	);
 	movingUI.splice(movingUI.indexOf(ui), 1);

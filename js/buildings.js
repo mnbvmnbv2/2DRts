@@ -107,7 +107,6 @@ class Building extends CanvasElement {
 	addBtnToModal(where, text, funct) {
 		const that = this;
 		$(function() {
-			console.log(funct);
 			const $btn = $('<button></button>').html(text).on('click', function() {
 				funct(that);
 			});
