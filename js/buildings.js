@@ -2,6 +2,15 @@
 width = 100
 height = 50
 */
+
+const buildingTypes = [
+	{ name: 'cobble', pic: 'buildings/CobbleRoom.png', frames: 0 },
+	{ name: 'wood1', pic: 'buildings/WoodenRoom.png', frames: 0 },
+	{ name: 'wood2', pic: 'buildings/WoodRoom1.png', frames: 0 },
+	{ name: 'anim', pic: 'buildings/SmallRoom.png', frames: 4 },
+	{ name: 'cavern', pic: 'buildings/Cavern.png', frames: 0 }
+];
+
 let buildings = [];
 let buildMap = new Map();
 let buildingModals = [];
@@ -94,10 +103,11 @@ class Building extends CanvasElement {
 			*/
 
 			const $main = $('<div></div>');
-			that.addBtnToModal($main, 'Make cobble', makeCobble);
-			that.addBtnToModal($main, 'Make wood1', makeWood1);
-			that.addBtnToModal($main, 'Make wood2', makeWood2);
-			that.addBtnToModal($main, 'Make base', makeBase);
+			buildingTypes.forEach((b) => {
+				that.addBtnToModal($main, `Make ${b.name}`, function() {
+					changeRoom(that, b.name, b.pic, b.frames);
+				});
+			});
 			that.$modal.append($main);
 
 			$('body').append(that.$modal);
@@ -146,31 +156,10 @@ class Building extends CanvasElement {
 		});
 	}
 }
-function makeBase(that) {
-	that.name = 'Base';
-	that.numberOfFrames = 4;
+function changeRoom(that, name, pic, frames) {
+	that.name = name;
+	that.numberOfFrames = frames;
 	that.pic = new Image();
-	that.pic.src = 'pictures/buildings/SmallRoom.png';
-	that.frame = 0;
-}
-function makeCobble(that) {
-	that.name = 'Bobble';
-	that.numberOfFrames = 0;
-	that.pic = new Image();
-	that.pic.src = 'pictures/buildings/CobbleRoom.png';
-	that.frame = 0;
-}
-function makeWood1(that) {
-	that.name = 'Room';
-	that.numberOfFrames = 0;
-	that.pic = new Image();
-	that.pic.src = 'pictures/buildings/WoodenRoom.png';
-	that.frame = 0;
-}
-function makeWood2(that) {
-	that.name = 'Wood2';
-	that.numberOfFrames = 0;
-	that.pic = new Image();
-	that.pic.src = 'pictures/buildings/WoodRoom1.png';
+	that.pic.src = `pictures/${pic}`;
 	that.frame = 0;
 }
