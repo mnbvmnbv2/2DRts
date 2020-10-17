@@ -40,5 +40,9 @@ function buildBase(ui) {
 		{ x: 0, y: 0 }
 	);
 	movingUI.splice(movingUI.indexOf(ui), 1);
+	$(function() {
+		a.$modal.toggle();
+	});
+	a.createAdjacentBuildButtons();
 	return a;
 }

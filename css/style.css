@@ -61,6 +61,7 @@ button {
 	background: white;
 	color: black;
 	font-family: LCD_Solid;
+	display: none;
 }
 
 .topDiv {

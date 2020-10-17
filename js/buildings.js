@@ -36,11 +36,10 @@ class Building extends CanvasElement {
 
 		//left,top,right,bottom
 		this.adjacent = [ undefined, undefined, undefined, undefined ];
-		this.checkAdjacent();
 
 		buildings.push(this);
 
-		this.createAdjacentBuildButtons();
+		this.checkAdjacent();
 	}
 	left() {
 		return this.adjacent[0];
@@ -93,14 +92,6 @@ class Building extends CanvasElement {
 					that.$modal.toggle();
 				})
 				.appendTo($topDiv);
-
-			/*
-			that.$modal.addClass('modal');
-			that.$modal.css('left', `${Math.floor((that.x + 25 - camera.x * camMove) / pixelSize) * pixelSize}px`);
-			that.$modal.css('top', `${Math.floor((that.y + 25 - camera.y * camMove) / pixelSize) * pixelSize}px`);
-			that.$modal.css('width', `${that.width - 50}px`);
-			that.$modal.css('height', `${that.height - 50}px`);
-			*/
 
 			const $main = $('<div></div>');
 			buildingTypes.forEach((b) => {
@@ -162,4 +153,6 @@ function changeRoom(that, name, pic, frames) {
 	that.pic = new Image();
 	that.pic.src = `pictures/${pic}`;
 	that.frame = 0;
+	that.checkAdjacent();
+	that.createAdjacentBuildButtons();
 }
