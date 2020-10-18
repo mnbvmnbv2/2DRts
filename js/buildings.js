@@ -85,6 +85,14 @@ class Building extends CanvasElement {
 				type : 'checkbox'
 			}).appendTo($topDiv);
 
+			$('<label></label>').html('Lock').appendTo($topDiv);
+
+			$('<input>', {
+				type : 'checkbox'
+			}).appendTo($topDiv);
+
+			$('<label></label>').html('R').appendTo($topDiv);
+
 			$('<span>X</span>', {
 				class : 'close'
 			})

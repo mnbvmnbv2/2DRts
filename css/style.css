@@ -82,6 +82,11 @@ button {
 	height: 18px;
 }
 
+.topDiv label {
+	margin: 9px 0;
+	font-size: 15px;
+}
+
 .topDiv span {
 	font-size: 23px;
 	padding: 7px;
