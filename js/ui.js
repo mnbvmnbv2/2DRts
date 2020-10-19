@@ -31,12 +31,12 @@ function buildRoom(ui, coord) {
 function buildBase(ui) {
 	let a = new Building(
 		'Base',
-		'buildings/SmallRoom.png',
+		'buildings/ThroneRoom1.png',
 		Math.floor((ui.x - 168) / pixelSize) * pixelSize,
 		Math.floor((ui.y - 66) / pixelSize) * pixelSize,
 		100,
 		50,
-		4,
+		0,
 		{ x: 0, y: 0 }
 	);
 	movingUI.splice(movingUI.indexOf(ui), 1);
