@@ -164,4 +164,7 @@ function changeRoom(that, name, pic, frames) {
 	that.frame = 0;
 	that.checkAdjacent();
 	that.createAdjacentBuildButtons();
+	$(function() {
+		that.$modal.toggle();
+	});
 }
