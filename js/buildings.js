@@ -102,13 +102,8 @@ class Building extends CanvasElement {
 				})
 				.appendTo($topDiv);
 
-			const $main = $('<div></div>');
-			buildingTypes.forEach((b) => {
-				that.addBtnToModal($main, `Make ${b.name}`, function() {
-					changeRoom(that, b.name, b.pic, b.frames);
-				});
-			});
-			that.$modal.append($main);
+			that.$main = $('<div></div>');
+			that.$modal.append(that.$main);
 
 			$('body').append(that.$modal);
 			buildingModals.push(that.$modal);
@@ -122,6 +117,16 @@ class Building extends CanvasElement {
 			});
 			where.append($btn);
 		});
+	}
+	addChangeBtns(){
+		const that = this;
+		$(function(){
+			buildingTypes.forEach((b) => {
+				that.addBtnToModal(that.$main, `Make ${b.name}`, function() {
+					changeRoom(that, b.name, b.pic, b.frames);
+				});
+			});
+		})
 	}
 	checkAdjacent() {
 		this.checkNumber = buildings.length;

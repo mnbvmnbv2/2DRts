@@ -26,6 +26,7 @@ function buildRoom(ui, coord) {
 		coord
 	);
 	movingUI.splice(movingUI.indexOf(ui), 1);
+	a.addChangeBtns();
 	return a;
 }
 function buildBase(ui) {
