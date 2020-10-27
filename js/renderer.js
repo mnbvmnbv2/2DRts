@@ -86,6 +86,11 @@ function drawMovingUI() {
 new UIElement('icons/IconBase.png', gameArea.scrollWidth / 2 - 32, 686, 16, 16, false, function() {
 	base = buildBase(this);
 	base.checkAdjacent();
+	$(function() {
+		base.addBtnToModal(base.$main, 'make unit', function() {
+			new unit('miner', 'Miner.png', 300, 684, 32, 32, [ 0, 0, 1, 1, 2, 2, 2, 3, 3, 3 ], 0, 0);
+		});
+	});
 });
 
 function drawGame() {
