@@ -3,6 +3,7 @@
 //dir 0 = right, 1 = left
 
 let units = [];
+let targetUnit = 0;
 
 class unit {
 	constructor(name, pic, x, y, width, height, animFrames, animation, dir) {

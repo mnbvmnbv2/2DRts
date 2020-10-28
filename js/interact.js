@@ -5,8 +5,8 @@ document.addEventListener(
 		ev.preventDefault();
 		rightClick.x = ev.clientX + camera.x * camMove;
 		rightClick.y = ev.clientY + camera.y * camMove;
-		units[0].targetX = Math.floor((rightClick.x - units[0].width / 2) / pixelSize) * pixelSize;
-		units[0].checkIfTargetX();
+		units[targetUnit].targetX = Math.floor((rightClick.x - units[targetUnit].width / 2) / pixelSize) * pixelSize;
+		units[targetUnit].checkIfTargetX();
 		return false;
 	},
 	false
@@ -47,6 +47,14 @@ function mouseClickFunc(e) {
 				$(function() {
 					b.$modal.toggle();
 				});
+			}
+		}
+	});
+
+	units.forEach((u) => {
+		if (leftClick.x >= u.x && leftClick.x <= u.x + u.width) {
+			if (leftClick.y >= u.y && leftClick.y <= u.y + u.height) {
+				targetUnit = units.indexOf(u);
 			}
 		}
 	});
