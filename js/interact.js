@@ -12,6 +12,8 @@ document.addEventListener(
 	false
 );
 
+let unitStopBuilding = false;
+
 let leftClick = {
 	x : 0,
 	y : 0
@@ -25,6 +27,8 @@ function mouseClickFunc(e) {
 	leftClick.x = e.clientX + camera.x * camMove;
 	leftClick.y = e.clientY + camera.y * camMove;
 	console.log(leftClick.x + ', ' + leftClick.y);
+
+	unitStopBuilding = false;
 
 	staticUI.forEach((u) => {
 		if (leftClick.x - camera.x * camMove >= u.x && leftClick.x - camera.x * camMove <= u.x + u.width) {
@@ -41,20 +45,26 @@ function mouseClickFunc(e) {
 		}
 	});
 
+	units.forEach((u) => {
+		if (leftClick.x >= u.x && leftClick.x <= u.x + u.width) {
+			if (leftClick.y >= u.y && leftClick.y <= u.y + u.height) {
+				targetUnit = units.indexOf(u);
+				unitStopBuilding = true;
+			}
+		}
+	});
+
+	if (unitStopBuilding) {
+		return;
+	}
+
 	buildings.forEach((b) => {
+		console.log('hei');
 		if (leftClick.x >= b.x && leftClick.x <= b.x + b.width) {
 			if (leftClick.y >= b.y && leftClick.y <= b.y + b.height) {
 				$(function() {
 					b.$modal.toggle();
 				});
-			}
-		}
-	});
-
-	units.forEach((u) => {
-		if (leftClick.x >= u.x && leftClick.x <= u.x + u.width) {
-			if (leftClick.y >= u.y && leftClick.y <= u.y + u.height) {
-				targetUnit = units.indexOf(u);
 			}
 		}
 	});
