@@ -5,8 +5,8 @@ height = 50
 
 const buildingTypes = [
 	{ name: 'cobble', pic: 'buildings/CobbleRoom.png', frames: 0 },
-	{ name: 'wood1', pic: 'buildings/WoodenRoom.png', frames: 0 },
-	{ name: 'wood2', pic: 'buildings/WoodRoom1.png', frames: 0 },
+	{ name: 'wood1', pic: 'buildings/WoodRoom1.png', frames: 0 },
+	{ name: 'wood2', pic: 'buildings/WoodRoom2.png', frames: 0 },
 	{ name: 'anim', pic: 'buildings/SmallRoom.png', frames: 4 },
 	{ name: 'marble', pic: 'buildings/Marble.png', frames: 0 },
 	{ name: 'cavern', pic: 'buildings/Cavern.png', frames: 0 }
@@ -118,15 +118,15 @@ class Building extends CanvasElement {
 			where.append($btn);
 		});
 	}
-	addChangeBtns(){
+	addChangeBtns() {
 		const that = this;
-		$(function(){
+		$(function() {
 			buildingTypes.forEach((b) => {
 				that.addBtnToModal(that.$main, `Make ${b.name}`, function() {
 					changeRoom(that, b.name, b.pic, b.frames);
 				});
 			});
-		})
+		});
 	}
 	checkAdjacent() {
 		this.checkNumber = buildings.length;
