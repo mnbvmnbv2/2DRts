@@ -65,4 +65,14 @@ class unit {
 		}
 	}
 }
-let miner = new unit('miner', 'Miner.png', 100, floorHeight - 32 * 4, 32, 32, [ 0, 0, 1, 1, 2, 2, 2, 3, 3, 3 ], 0, 0);
+let miner = new unit(
+	'miner',
+	'Miner.png',
+	100,
+	floorHeight - 32 * pixelSize,
+	32,
+	32,
+	[ 0, 0, 1, 1, 2, 2, 2, 3, 3, 3 ],
+	0,
+	0
+);
