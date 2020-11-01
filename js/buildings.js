@@ -7,7 +7,7 @@ const buildingTypes = [
 	{ name: 'cobble', pic: 'buildings/CobbleRoom.png', frames: 0 },
 	{ name: 'wood1', pic: 'buildings/WoodRoom1.png', frames: 0 },
 	{ name: 'wood2', pic: 'buildings/WoodRoom2.png', frames: 0 },
-	{ name: 'anim', pic: 'buildings/SmallRoom.png', frames: 4 },
+	{ name: 'wood3', pic: 'buildings/WoodRoom3.png', frames: 4 },
 	{ name: 'marble', pic: 'buildings/Marble.png', frames: 0 },
 	{ name: 'cavern', pic: 'buildings/Cavern.png', frames: 0 }
 ];

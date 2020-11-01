@@ -59,7 +59,6 @@ function mouseClickFunc(e) {
 	}
 
 	buildings.forEach((b) => {
-		console.log('hei');
 		if (leftClick.x >= b.x && leftClick.x <= b.x + b.width) {
 			if (leftClick.y >= b.y && leftClick.y <= b.y + b.height) {
 				$(function() {

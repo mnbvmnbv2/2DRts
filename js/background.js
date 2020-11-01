@@ -58,8 +58,8 @@ for (var i = 0; i < 5; i++) {
 		'clouds/cloud1.png',
 		Math.floor(Math.random() * 3000) - 500,
 		Math.floor(Math.random() * 150) + 100,
-		0,
-		0,
+		70,
+		50,
 		10
 	);
 }
